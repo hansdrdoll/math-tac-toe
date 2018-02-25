@@ -1,58 +1,62 @@
+body {
+
+}
+
 .main {
-  display:flex;
-  align-items: center;
+  border:1px solid pink;
+  text-align: center;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items:center;
 }
 
 .board {
-  flex-direction: row;
-  justify-content: center;
+  order: 2;
   border:1px solid red;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow:row;
+  /*flex-grow: 2;*/
+}
 
+.row {
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .box {
-  display: inline-block;
   height: 100px;
   width: 100px;
   border:1px grey solid;
   margin: 10px;
+  font-size: 40px;
+  text-align: center;
 }
 
 .oddTokens {
-  flex-direction: column;
   /*flex-grow: 1;*/
-  /*justify-content: flex-start;*/
+  order: 1;
+  align-self:flex-start;
 }
 
 .evenTokens {
-  flex-direction: column;
   /*flex-grow: 1;*/
-  /*justify-content: flex-end;*/
-}
-
-.x {
-  background-color: red;
-}
-
-.o {
-  background-color: blue;
+  order: 3;
+  align-self: flex-start;
 }
 
 .token {
-  align-items: center;
-  align-content: center;
   border:1px solid blue;
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   margin: 10px;
-}
-
-.token div {
-  display: block;
-  /*align-content: center;*/
-  /*align-items: center;*/
-  margin: 0 auto;
-
 }
 
 .usedBox {

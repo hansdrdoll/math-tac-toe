@@ -1,5 +1,5 @@
 // math tac toe
-console.log("script connected")
+console.log("script connected!")
 // each user takes turns placing a number
 
 // the first player to make a row that equals 15 wins
@@ -46,15 +46,15 @@ var nextTurn = 1;
 
 function checkForWin () {
 
-    // $('.token').off()
-    // $('.box').off()
     boardActive = false
 
   for (i = 1; i < 9; i++) {
-
     var currentArr = eval('win'+i)
+    if (currentArr.length >= 3) {
+      console.log(currentArr)
     // console.log("checking array",currentArr)
     var winningNumbers = currentArr.reduce((a, b) => a + b, 0)
+  }
     // console.log(winningNumbers)
     if (winningNumbers === 15) {
       console.log("you won")
@@ -100,7 +100,7 @@ if (!num3Used){
     currentToken = 3
     placeToken()
     nextTurn = 2
-    num3Used = true;
+    num3Used = true
   }})}
 
 if (!num5Used) {
@@ -111,7 +111,7 @@ if (!num5Used) {
     currentToken = 5
     placeToken()
     nextTurn = 2
-    num5Used = true;
+    num5Used = true
   }})}
 
 if (!num7Used) {
@@ -122,7 +122,7 @@ if (!num7Used) {
     currentToken = 7
     placeToken()
     nextTurn = 2
-    num7Used = true;
+    num7Used = true
   }})}
 
 if (!num9Used) {
@@ -133,7 +133,7 @@ if (!num9Used) {
     currentToken = 9
     placeToken()
     nextTurn = 2
-    num9Used = true;
+    num9Used = true
   }})}
 }}
 
@@ -160,7 +160,7 @@ if (!num4Used) {
     currentToken = 4
     placeToken()
     nextTurn = 1
-    num4Used = true;
+    num4Used = true
   }})}
 
 if (!num6Used) {
@@ -171,7 +171,7 @@ if (!num6Used) {
     currentToken = 6
     placeToken()
     nextTurn = 1
-    num6Used = true;
+    num6Used = true
   }})}
 
 if (!num8Used) {
@@ -182,7 +182,7 @@ if (!num8Used) {
     currentToken = 8
     placeToken()
     nextTurn = 1
-    num8Used = true;
+    num8Used = true
   }})}
 
 }}
@@ -205,8 +205,6 @@ if (boardActive) {
   if(!boxAUsed) {
     $boxA.one('click', function() {
     if (boardActive) {
-    console.log('Box A clicked')
-    console.log('inside a',currentToken)
     $boxA.addClass('usedBox')
     $boxA.text(currentToken)
     win1.push(currentToken)
@@ -219,8 +217,6 @@ if (boardActive) {
   if (!boxBUsed) {
   $boxB.one('click', function() {
     if (boardActive) {
-    console.log('Box B clicked')
-    console.log('inside b' + currentToken)
     $boxB.addClass('usedBox')
     $boxB.text(currentToken)
     win2.push(currentToken)
@@ -237,7 +233,7 @@ if (boardActive) {
     win3.push(currentToken)
     win4.push(currentToken)
     win8.push(currentToken)
-    boxCused = true;
+    boxCUsed = true;
     checkForWin()
   }})}
 
@@ -248,7 +244,7 @@ if (boardActive) {
     $boxD.text(currentToken)
     win1.push(currentToken)
     win5.push(currentToken)
-    boxDused = true;
+    boxDUsed = true;
     checkForWin()
   }})}
 
@@ -261,7 +257,7 @@ if (boardActive) {
     win5.push(currentToken)
     win7.push(currentToken)
     win8.push(currentToken)
-    boxEused = true;
+    boxEUsed = true;
     checkForWin()
   }})}
 
@@ -272,7 +268,7 @@ if (boardActive) {
     $boxF.text(currentToken)
     win3.push(currentToken)
     win5.push(currentToken)
-    boxFused = true;
+    boxFUsed = true;
     checkForWin()
   }})}
 
@@ -284,7 +280,7 @@ if (boardActive) {
     win1.push(currentToken)
     win6.push(currentToken)
     win8.push(currentToken)
-    boxGused = true;
+    boxGUsed = true;
     checkForWin()
   }})}
 
@@ -295,7 +291,7 @@ if (boardActive) {
     $boxH.text(currentToken)
     win2.push(currentToken)
     win6.push(currentToken)
-    boxHused = true;
+    boxHUsed = true;
     checkForWin()
   }})}
 
@@ -307,7 +303,7 @@ if (boardActive) {
     win3.push(currentToken)
     win6.push(currentToken)
     win7.push(currentToken)
-    boxIused = true;
+    boxIUsed = true;
     checkForWin()
   }})}
 

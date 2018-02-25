@@ -1,10 +1,11 @@
 // math tac toe
 console.log("script connected!")
+
+// to do:
+// 1) add tie condition
+
 // each user takes turns placing a number
-
 // the first player to make a row that equals 15 wins
-
-//
 
 // list of available even numbers on right side
 // available odd numbers on left side
@@ -40,6 +41,15 @@ var num1Used = false; num2Used = false; num3Used = false; num4Used = false; num5
 // this should also be an object
 var boxAUsed = false; boxBUsed = false; boxCUsed = false; boxDUsed = false; boxEUsed = false; boxFUsed = false; boxGUsed = false; boxHUsed = false; boxIUsed = false;
 var boardActive = false;
+
+// vars for the toast elements
+var toastDiv = document.getElementById("toast")
+var toastImg = document.getElementById("img")
+var toastText = document.getElementById("desc")
+
+// vars for the turn change indicators
+var $oddTokens = $('.oddTokens')
+var $evenTokens = $('.evenTokens')
 
 // odd's turn = 1, even's turn = 2
 var nextTurn = 1;
@@ -80,6 +90,13 @@ var currentToken
 function oddTurn () {
 
 if (nextTurn === 1) {
+
+  $evenTokens.removeClass('activePlayer')
+  $oddTokens.addClass('activePlayer')
+
+  toastImg.innerHTML = '<img src="frog.png">'
+  launchToast('Player One, make your move!')
+
 
 if (!num1Used) {
   $num1.one('click', function() {
@@ -138,8 +155,14 @@ if (!num9Used) {
 }}
 
 function evenTurn () {
-
+// console.log(nextTurn)
 if (nextTurn === 2) {
+
+  $oddTokens.removeClass('activePlayer')
+  $evenTokens.addClass('activePlayer')
+
+toastImg.innerHTML = '<img src="panda_face.png">'
+launchToast('Player Two, make your move!')
 
 if (!num2Used) {
   $num2.one('click', function() {
@@ -309,5 +332,24 @@ if (boardActive) {
 
 }}
 
+// Now for the toast code from
+// Pierre Smith
+// https://codepen.io/kipp0/pen/pPNrrj
+// and emoji images courtesy of
+// https://www.webpagefx.com/tools/emoji-cheat-sheet/
 
-oddTurn()
+function launchToast(str) {
+    toastText.textContent = str;
+    toastDiv.className = "show";
+    setTimeout(function(){ toastDiv.className = toastDiv.className.replace("show", ""); }, 5000);
+}
+
+function startGame () {
+  // set the style for player one
+  toastImg.innerHTML = '<img src="checkered_flag.png">'
+  launchToast('Welcome to the game!')
+  setTimeout(oddTurn, 2000)
+}
+
+
+startGame();

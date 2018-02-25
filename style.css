@@ -1,25 +1,59 @@
 body {
+  background-color: rgb(69,92,123);
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+}
 
+/*game title*/
+h1 {
+  font-size: 60px;
+  color:rgb(172,108,130);
+  margin: 10px 0;
+}
+
+/*numbers*/
+h2 {
+  font-size: 70px;
+  margin: 10px 0;
+}
+
+/*player name*/
+h3 {
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+/*game description*/
+h4 {
+  font-family: 'Rubik', sans-serif;
+  color:rgb(255,240,209);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .main {
-  border:1px solid pink;
+  /*border:1px solid pink;*/
   text-align: center;
   margin: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items:center;
+  flex: 1 1 auto;
 }
 
 .board {
+  background-color:rgb(104,92,121);
   order: 2;
-  border:1px solid red;
+  /*border:1px solid red;*/
   padding: 10px;
   margin: 0 auto;
   display: flex;
   flex-flow:row;
+  align-items: center;
+  justify-content: center;
   /*flex-grow: 2;*/
 }
 
@@ -32,37 +66,156 @@ body {
 }
 
 .box {
+  font-family: 'Rubik', sans-serif;
+  color: rgb(255,240, 209);
+  font-weight: 700;
   height: 100px;
   width: 100px;
   border:1px grey solid;
-  margin: 10px;
-  font-size: 40px;
+  margin: 20px 10px;
+  font-size: 100px;
   text-align: center;
 }
 
+.usedBox {
+/*  font-size:100px;
+*/}
+
 .oddTokens {
   /*flex-grow: 1;*/
+  /*border: 1px solid orange;*/
+  margin: 0 auto;
   order: 1;
+  text-align: center;
+  flex-direction: column;
   align-self:flex-start;
+  justify-content: center;
 }
 
 .evenTokens {
   /*flex-grow: 1;*/
+  /*border: 1px solid orange;*/
+  margin: 0 auto;
   order: 3;
   align-self: flex-start;
+  align-items: center;
+}
+
+.activePlayer {
+  background-color: rgb(172,108,130);
+  color: #fff;
+  animation: fadein 0.5s, fadeout 0.5s 4.5s;
 }
 
 .token {
-  border:1px solid blue;
+  font-size: 70px;
+  color: rgb(218,114,126);
+  /*border:1px solid blue;*/
   height: 70px;
   width: 70px;
-  margin: 10px;
-}
-
-.usedBox {
-  background-color: green;
+  margin: 10px auto;
 }
 
 .usedToken {
+  color:rgb(0,0,0);
   background-color: gray;
+}
+
+/*Now the toast code from Pierre Smith
+https://codepen.io/kipp0/pen/pPNrrj
+*/
+#toast {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: rgba(200,200,200,.8);
+    color: #000;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right:0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+#toast #img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    padding-top: 16px;
+    padding-bottom: 26px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: rgba(200,200,200,.8);
+    color: #fff;
+}
+#toast img {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  top: -10px;
+}
+#toast #desc{
+  color: #fff;
+  padding: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 400px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 400px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 400px}
+    to {min-width: 400px}
+}
+
+@keyframes stay {
+    from {min-width: 400px}
+    to {min-width: 400px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 400px;}
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 400px;}
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
 }

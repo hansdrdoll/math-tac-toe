@@ -41,22 +41,13 @@ var num1Used = false; num2Used = false; num3Used = false; num4Used = false; num5
 var boxAUsed = false; boxBUsed = false; boxCUsed = false; boxDUsed = false; boxEUsed = false; boxFUsed = false; boxGUsed = false; boxHUsed = false; boxIUsed = false;
 var boardActive = false;
 
-// test pushes
-
-// win8.push(8)
-// win8.push(6)
-// win7.push(6)
-// win7.push(8)
-
-// console.log(win8)
-
 // odd's turn = 1, even's turn = 2
 var nextTurn = 1;
 
 function checkForWin () {
 
-    $('.token').off()
-    $('.box').off()
+    // $('.token').off()
+    // $('.box').off()
     boardActive = false
 
   for (i = 1; i < 9; i++) {
@@ -84,99 +75,115 @@ function checkForWin () {
 
 // make the numbers live
 
+var currentToken
+
 function oddTurn () {
 
 if (nextTurn === 1) {
 
 if (!num1Used) {
-  $num1.click(function() {
+  $num1.one('click', function() {
+    if (nextTurn === 1) {
     $num1.addClass('usedToken')
     boardActive = true
-    placeToken(1)
+    currentToken = 1
+    placeToken()
     nextTurn = 2
     num1Used = true
-    $num1.off()
-  })}
+  }})}
 
 if (!num3Used){
-  $num3.click(function() {
+  $num3.one('click', function() {
+    if (nextTurn === 1) {
     $num3.addClass('usedToken')
-    placeToken(3)
+    boardActive = true
+    currentToken = 3
+    placeToken()
     nextTurn = 2
     num3Used = true;
-    $num3.off()
-  })}
+  }})}
 
 if (!num5Used) {
-  $num5.click(function() {
+  $num5.one('click', function() {
+    if (nextTurn === 1) {
     $num5.addClass('usedToken')
-    placeToken(5)
+    boardActive = true
+    currentToken = 5
+    placeToken()
     nextTurn = 2
     num5Used = true;
-    $num5.off()
-  })}
+  }})}
 
 if (!num7Used) {
-  $num7.click(function() {
-
+  $num7.one('click', function() {
+    if (nextTurn === 1) {
     $num7.addClass('usedToken')
-    placeToken(7)
+    boardActive = true
+    currentToken = 7
+    placeToken()
     nextTurn = 2
     num7Used = true;
-    $num7.off()
-  })}
+  }})}
 
 if (!num9Used) {
-  $num9.click(function() {
+  $num9.one('click', function() {
+    if (nextTurn === 1) {
     $num9.addClass('usedToken')
-    placeToken(9)
+    boardActive = true
+    currentToken = 9
+    placeToken()
     nextTurn = 2
     num9Used = true;
-    $num9.off()
-  })}
+  }})}
 }}
-oddTurn();
 
 function evenTurn () {
 
 if (nextTurn === 2) {
 
 if (!num2Used) {
-  $num2.click(function() {
+  $num2.one('click', function() {
+    if (nextTurn === 2) {
     $num2.addClass('usedToken')
     boardActive = true
-    placeToken(2)
+    currentToken = 2
+    placeToken()
     nextTurn = 1
-    num3Used = true
-    $num2.off()
-  })}
+    num2Used = true
+  }})}
 
-if (!num4Used){
-  $num4.click(function() {
+if (!num4Used) {
+  $num4.one('click', function() {
+    if (nextTurn === 2) {
     $num4.addClass('usedToken')
-    placeToken(4)
+    boardActive = true
+    currentToken = 4
+    placeToken()
     nextTurn = 1
     num4Used = true;
-    $num4.off()
-  })}
+  }})}
 
 if (!num6Used) {
-  $num6.click(function() {
+  $num6.one('click', function() {
+    if (nextTurn === 2) {
     $num6.addClass('usedToken')
-    placeToken(6)
+    boardActive = true
+    currentToken = 6
+    placeToken()
     nextTurn = 1
     num6Used = true;
-    $num6.off()
-  })}
+  }})}
 
 if (!num8Used) {
-  $num8.click(function() {
+  $num8.one('click', function() {
+    if (nextTurn === 2) {
     $num8.addClass('usedToken')
-    placeToken(8)
+    boardActive = true
+    currentToken = 8
+    placeToken()
     nextTurn = 1
     num8Used = true;
-    $num8.off()
-  })}
+  }})}
 
 }}
 
@@ -184,117 +191,127 @@ if (!num8Used) {
 // game board
 
 
-function placeToken (num) {
+function placeToken () {
+
+// turns out that feeding the token value as an arugment
+// stores the first argument value in all the event handlers
+// forever, even when a new argument is passed to the parent function
+// ugh
+
+  console.log(currentToken)
 
 if (boardActive) {
 
-  var tokenHtml = '<h2>' + num + '</h2>'
-  var tokenValue = num
-
-
   if(!boxAUsed) {
-    $boxA.click(function() {
+    $boxA.one('click', function() {
+    if (boardActive) {
     console.log('Box A clicked')
-    $boxA.html(tokenHtml)
-    win1.push(tokenValue)
-    win4.push(tokenValue)
-    win7.push(tokenValue)
+    console.log('inside a',currentToken)
+    $boxA.addClass('usedBox')
+    $boxA.text(currentToken)
+    win1.push(currentToken)
+    win4.push(currentToken)
+    win7.push(currentToken)
     boxAUsed = true
-    $boxA.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxBUsed) {
-  $boxB.click(function() {
+  $boxB.one('click', function() {
+    if (boardActive) {
     console.log('Box B clicked')
-    $boxB.html(tokenHtml)
-    win2.push(tokenValue)
-    win4.push(tokenValue)
+    console.log('inside b' + currentToken)
+    $boxB.addClass('usedBox')
+    $boxB.text(currentToken)
+    win2.push(currentToken)
+    win4.push(currentToken)
     boxBUsed = true;
-    $boxB.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxCUsed) {
-  $boxC.click(function() {
-    $boxC.html(tokenHtml)
-    win3.push(tokenValue)
-    win4.push(tokenValue)
-    win8.push(tokenValue)
+  $boxC.one('click', function() {
+    if (boardActive) {
+    $boxC.addClass('usedBox')
+    $boxC.text(currentToken)
+    win3.push(currentToken)
+    win4.push(currentToken)
+    win8.push(currentToken)
     boxCused = true;
-    $boxC.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxDUsed) {
-  $boxD.click(function() {
-    $boxD.html(tokenHtml)
-    win1.push(tokenValue)
-    win5.push(tokenValue)
+  $boxD.one('click', function() {
+    if (boardActive) {
+    $boxD.addClass('usedBox')
+    $boxD.text(currentToken)
+    win1.push(currentToken)
+    win5.push(currentToken)
     boxDused = true;
-    $boxD.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxEUsed) {
-  $boxE.click(function() {
-    $boxE.html(tokenHtml)
-    win2.push(tokenValue)
-    win5.push(tokenValue)
-    win7.push(tokenValue)
-    win8.push(tokenValue)
+  $boxE.one('click', function() {
+    if (boardActive) {
+    $boxE.addClass('usedBox')
+    $boxE.text(currentToken)
+    win2.push(currentToken)
+    win5.push(currentToken)
+    win7.push(currentToken)
+    win8.push(currentToken)
     boxEused = true;
-    $boxE.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxFUsed) {
-  $boxF.click(function() {
-    $boxF.html(tokenHtml)
-    win3.push(tokenValue)
-    win5.push(tokenValue)
+  $boxF.one('click', function() {
+    if (boardActive) {
+    $boxF.addClass('usedBox')
+    $boxF.text(currentToken)
+    win3.push(currentToken)
+    win5.push(currentToken)
     boxFused = true;
-    $boxF.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxGUsed) {
-  $boxG.click(function() {
-    $boxG.html(tokenHtml)
-    win1.push(tokenValue)
-    win6.push(tokenValue)
-    win8.push(tokenValue)
+  $boxG.one('click', function() {
+    if (boardActive) {
+    $boxG.addClass('usedBox')
+    $boxG.text(currentToken)
+    win1.push(currentToken)
+    win6.push(currentToken)
+    win8.push(currentToken)
     boxGused = true;
-    $boxG.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxHUsed) {
-  $boxH.click(function() {
-    $boxH.html(tokenHtml)
-    win2.push(tokenValue)
-    win6.push(tokenValue)
+  $boxH.one('click', function() {
+    if (boardActive) {
+    $boxH.addClass('usedBox')
+    $boxH.text(currentToken)
+    win2.push(currentToken)
+    win6.push(currentToken)
     boxHused = true;
-    $boxH.off()
     checkForWin()
-  })}
+  }})}
 
   if (!boxIUsed) {
-  $boxI.click(function() {
-    $boxI.html(tokenHtml)
-    win3.push(tokenValue)
-    win6.push(tokenValue)
-    win7.push(tokenValue)
+  $boxI.one('click', function() {
+    if (boardActive) {
+    $boxI.addClass('usedBox')
+    $boxI.text(currentToken)
+    win3.push(currentToken)
+    win6.push(currentToken)
+    win7.push(currentToken)
     boxIused = true;
-    $boxI.off()
     checkForWin()
-  })}
+  }})}
 
 }}
 
 
-// make the boxes live
-
-
-
-// checkForWin()
+oddTurn()

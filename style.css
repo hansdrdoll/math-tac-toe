@@ -55,6 +55,10 @@
 
 }
 
+.usedBox {
+  background-color: green;
+}
+
 .usedToken {
-  color: red;
+  background-color: gray;
 }

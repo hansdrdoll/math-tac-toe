@@ -43,13 +43,16 @@ var boxAUsed = false; boxBUsed = false; boxCUsed = false; boxDUsed = false; boxE
 var boardActive = false;
 
 // vars for the toast elements
-var toastDiv = document.getElementById("toast")
-var toastImg = document.getElementById("img")
-var toastText = document.getElementById("desc")
+var toastDiv = document.getElementById("toast"); toastImg = document.getElementById("img"); toastText = document.getElementById("desc")
+
+// player instructions
+var p1Message = document.getElementById("p1message"); p2Message = document.getElementById("p2message")
 
 // vars for the turn change indicators
-var $oddTokens = $('.oddTokens')
-var $evenTokens = $('.evenTokens')
+var $oddTokens = $('.oddTokens'); $evenTokens = $('.evenTokens')
+
+var $description = $('h4'); $title = $('h1')
+var tryAgain = '<a href="#" onclick="window.location.reload(true);">Another round?'
 
 // odd's turn = 1, even's turn = 2
 var nextTurn = 1;
@@ -57,6 +60,17 @@ var nextTurn = 1;
 function checkForWin () {
 
     boardActive = false
+
+// check for a tie
+if (num1Used && num2Used && num3Used && num4Used && num5Used && num6Used && num7Used && num8Used && num9Used) {
+  $evenTokens.removeClass('activePlayer')
+  $oddTokens.removeClass('activePlayer')
+  $title.text('It\'s a tie!')
+  $description.html(tryAgain)
+  p1Message.innerHTML = ''
+  p2Message.innerHTML = ''
+  // console.log("tie!")
+} else {
 
   for (i = 1; i < 9; i++) {
     var currentArr = eval('win'+i)
@@ -67,17 +81,31 @@ function checkForWin () {
   }
     // console.log(winningNumbers)
     if (winningNumbers === 15) {
-      console.log("you won")
+      if (nextTurn === 1) {
+        // console.log("Player two wins!")
+        $title.text('Player Two Wins!')
+        $description.html(tryAgain)
+        $evenTokens.removeClass('activePlayer').addClass('winPlayer')
+        p2Message.innerHTML = ''
+        nextTurn = 3
+      } else {
+        // console.log("Player one wins!")
+        $title.text('Player One Wins!')
+        $description.html(tryAgain)
+        $oddTokens.removeClass('activePlayer').addClass('winPlayer')
+        p1Message.innerHTML = ''
+        nextTurn = 3
+      }
       break;
     } else if (i === 8 && nextTurn === 2) {
       evenTurn()
-      console.log("even's turn is next")
+      // console.log("even's turn is next")
     } else if (i === 8 && nextTurn === 1) {
       oddTurn()
-      console.log("odd's turn is next")
+      // console.log("odd's turn is next")
     }
   }
-}
+}}
 
 
 // user selects a number, then selects a box
@@ -97,6 +125,8 @@ if (nextTurn === 1) {
   toastImg.innerHTML = '<img src="frog.png">'
   launchToast('Player One, make your move!')
 
+  p2Message.innerHTML = ''
+  p1Message.innerHTML = 'Select a number,<br>then click to place it.'
 
 if (!num1Used) {
   $num1.one('click', function() {
@@ -161,8 +191,11 @@ if (nextTurn === 2) {
   $oddTokens.removeClass('activePlayer')
   $evenTokens.addClass('activePlayer')
 
-toastImg.innerHTML = '<img src="panda_face.png">'
-launchToast('Player Two, make your move!')
+  toastImg.innerHTML = '<img src="panda_face.png">'
+  launchToast('Player Two, make your move!')
+
+  p1Message.innerHTML = ''
+  p2Message.innerHTML = 'Select a number,<br>then click to place it.'
 
 if (!num2Used) {
   $num2.one('click', function() {

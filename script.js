@@ -23,14 +23,21 @@ console.log("script connected")
 // else next turn
 
 // global vars
+// make the tokens accessable
+var $num1 = $('#num1'); $num2 = $('#num2'); $num3 = $('#num3'); $num4 = $('#num4'); $num5 = $('#num5'); $num6 = $('#num6'); $num7 = $('#num7'); $num8 = $('#num8'); $num9 = $('#num9');
+
+// make the game board accessable
+var $boxA = $('#a'); $boxB = $('#b'); $boxC = $('#c'); $boxD = $('#d'); $boxE = $('#e'); $boxF = $('#f'); $boxG = $('#g'); $boxH = $('#h'); $boxI = $('#i');
 
 // win conditions
 var win1 = []; win2 = []; win3 = []; win4 = []; win5 = []; win6 = []; win7 = []; win8 = [];
 
 // number use states
+// this should just be an object
 var num1Used = false; num2Used = false; num3Used = false; num4Used = false; num5Used = false; num6Used = false; num7Used = false; num8Used = false; num9Used = false;
 
 // box use states
+// this should also be an object
 var boxAUsed = false; boxBUsed = false; boxCUsed = false; boxDUsed = false; boxEUsed = false; boxFUsed = false; boxGUsed = false; boxHUsed = false; boxIUsed = false;
 var boardActive = false;
 
@@ -48,7 +55,8 @@ var nextTurn = 1;
 
 function checkForWin () {
 
-    // $('.token').off()
+    $('.token').off()
+    $('.box').off()
     boardActive = false
 
   for (i = 1; i < 9; i++) {
@@ -61,8 +69,10 @@ function checkForWin () {
       console.log("you won")
       break;
     } else if (i === 8 && nextTurn === 2) {
+      evenTurn()
       console.log("even's turn is next")
     } else if (i === 8 && nextTurn === 1) {
+      oddTurn()
       console.log("odd's turn is next")
     }
   }
@@ -77,7 +87,6 @@ function checkForWin () {
 function oddTurn () {
 
 if (nextTurn === 1) {
-var $num1 = $('#num1'); $num3 = $('#num3'); $num5 = $('#num5'); $num7 = $('#num7'); $num9 = $('#num9');
 
 if (!num1Used) {
   $num1.click(function() {
@@ -87,7 +96,6 @@ if (!num1Used) {
     nextTurn = 2
     num1Used = true
     $num1.off()
-    console.log('on',num1Used)
   })}
 
 if (!num3Used){
@@ -110,6 +118,7 @@ if (!num5Used) {
 
 if (!num7Used) {
   $num7.click(function() {
+
     $num7.addClass('usedToken')
     placeToken(7)
     nextTurn = 2
@@ -128,9 +137,51 @@ if (!num9Used) {
 }}
 oddTurn();
 
+function evenTurn () {
+
+if (nextTurn === 2) {
+
+if (!num2Used) {
+  $num2.click(function() {
+    $num2.addClass('usedToken')
+    boardActive = true
+    placeToken(2)
+    nextTurn = 1
+    num3Used = true
+    $num2.off()
+  })}
+
+if (!num4Used){
+  $num4.click(function() {
+    $num4.addClass('usedToken')
+    placeToken(4)
+    nextTurn = 1
+    num4Used = true;
+    $num4.off()
+  })}
+
+if (!num6Used) {
+  $num6.click(function() {
+    $num6.addClass('usedToken')
+    placeToken(6)
+    nextTurn = 1
+    num6Used = true;
+    $num6.off()
+  })}
+
+if (!num8Used) {
+  $num8.click(function() {
+    $num8.addClass('usedToken')
+    placeToken(8)
+    nextTurn = 1
+    num8Used = true;
+    $num8.off()
+  })}
+
+}}
+
 
 // game board
-let $boxA = $('#a'); $boxB = $('#b'); $boxC = $('#c'); $boxD = $('#d'); $boxE = $('#e'); $boxF = $('#f'); $boxG = $('#g'); $boxH = $('#h'); $boxI = $('#i');
 
 
 function placeToken (num) {
@@ -160,6 +211,7 @@ if (boardActive) {
     win2.push(tokenValue)
     win4.push(tokenValue)
     boxBUsed = true;
+    $boxB.off()
     checkForWin()
   })}
 
@@ -170,6 +222,7 @@ if (boardActive) {
     win4.push(tokenValue)
     win8.push(tokenValue)
     boxCused = true;
+    $boxC.off()
     checkForWin()
   })}
 
@@ -179,6 +232,7 @@ if (boardActive) {
     win1.push(tokenValue)
     win5.push(tokenValue)
     boxDused = true;
+    $boxD.off()
     checkForWin()
   })}
 
@@ -190,6 +244,7 @@ if (boardActive) {
     win7.push(tokenValue)
     win8.push(tokenValue)
     boxEused = true;
+    $boxE.off()
     checkForWin()
   })}
 
@@ -199,6 +254,7 @@ if (boardActive) {
     win3.push(tokenValue)
     win5.push(tokenValue)
     boxFused = true;
+    $boxF.off()
     checkForWin()
   })}
 
@@ -209,6 +265,7 @@ if (boardActive) {
     win6.push(tokenValue)
     win8.push(tokenValue)
     boxGused = true;
+    $boxG.off()
     checkForWin()
   })}
 
@@ -218,6 +275,7 @@ if (boardActive) {
     win2.push(tokenValue)
     win6.push(tokenValue)
     boxHused = true;
+    $boxH.off()
     checkForWin()
   })}
 
@@ -228,6 +286,7 @@ if (boardActive) {
     win6.push(tokenValue)
     win7.push(tokenValue)
     boxIused = true;
+    $boxI.off()
     checkForWin()
   })}
 

@@ -122,8 +122,8 @@ if (nextTurn === 1) {
   $evenTokens.removeClass('activePlayer')
   $oddTokens.addClass('activePlayer')
 
-  toastImg.innerHTML = '<img src="frog.png">'
-  launchToast('Player One, make your move!')
+  // toastImg.innerHTML = '<img src="frog.png">'
+  // launchToast('Player One, make your move!')
 
   p2Message.innerHTML = ''
   p1Message.innerHTML = 'Select a number,<br>then click to place it.'
@@ -191,8 +191,8 @@ if (nextTurn === 2) {
   $oddTokens.removeClass('activePlayer')
   $evenTokens.addClass('activePlayer')
 
-  toastImg.innerHTML = '<img src="panda_face.png">'
-  launchToast('Player Two, make your move!')
+  // toastImg.innerHTML = '<img src="panda_face.png">'
+  // launchToast('Player Two, make your move!')
 
   p1Message.innerHTML = ''
   p2Message.innerHTML = 'Select a number,<br>then click to place it.'
@@ -240,21 +240,16 @@ if (!num8Used) {
     nextTurn = 1
     num8Used = true
   }})}
-
 }}
 
-
 // game board
-
 
 function placeToken () {
 
 // turns out that feeding the token value as an arugment
-// stores the first argument value in all the event handlers
-// forever, even when a new argument is passed to the parent function
+// stores the first argument value in all the event handlers forever,
+// even when a new argument is passed to the parent function
 // ugh
-
-  console.log(currentToken)
 
 if (boardActive) {
 
@@ -379,9 +374,9 @@ function launchToast(str) {
 
 function startGame () {
   // set the style for player one
-  toastImg.innerHTML = '<img src="checkered_flag.png">'
-  launchToast('Welcome to the game!')
-  setTimeout(oddTurn, 2000)
+  // toastImg.innerHTML = '<img src="checkered_flag.png">'
+  // launchToast('Welcome to the game!')
+  setTimeout(oddTurn, 1000)
 }
 
 

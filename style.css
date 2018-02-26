@@ -85,7 +85,7 @@ h4 {
   font-weight: 700;
   height: 100px;
   width: 100px;
-  border:1px white solid;
+  border:1px solid rgb(255,240,209);
   border-radius: 4px;
   margin: 20px 10px;
   font-size: 100px;
@@ -93,7 +93,7 @@ h4 {
 }
 
 .usedBox {
-  border: 1px grey solid;
+  border: 1px solid rgb(118,105,138);
   border-radius: 4px;
 }
 
@@ -143,8 +143,8 @@ h4 {
   color: #fff;
   background-color: rgba(167,97,142,.7);
   transition: 0.5s;
-  border: 2px solid white;
-  border-radius: 2px;
+  border: 2px solid rgb(242,155,160);
+  border-radius: 3px;
 }
 
 .token {

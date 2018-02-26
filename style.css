@@ -60,14 +60,12 @@ h4 {
 .board {
   background-color:rgb(104,92,121);
   order: 2;
-  /*border:1px solid red;*/
   padding: 10px;
   margin: 0 auto;
   display: flex;
   flex-flow:row;
   align-items: center;
   justify-content: center;
-  /*flex-grow: 2;*/
 }
 
 .row {
@@ -102,8 +100,7 @@ h4 {
   border-radius: 5px;
   margin: 0 auto;
   order: 1;
-/*  text-align: center;
-*/  flex-direction: column;
+  flex-direction: column;
   align-self:flex-start;
   justify-content: center;
   padding: 10px 20px;
@@ -124,7 +121,6 @@ h4 {
 .message {
   font-size:14px;
   height: 20px;
-  /*color:#fff;*/
 }
 
 .activePlayer {
@@ -155,5 +151,99 @@ h4 {
 
 .usedToken {
   color:rgb(51,69,92);
-  /*background-color: gray;*/
+}
+
+@media only screen and (max-width: 767px) {
+
+h1 {
+  font-size: 30px;
+  margin: 5px 0;
+}
+
+/*numbers*/
+h2 {
+  font-size: 40px;
+  margin: 5px 0;
+}
+
+/*player name*/
+h3 {
+  font-size: 30px;
+}
+/*game description*/
+h4 {
+  font-size: 16px;
+  margin: 10px 0 0 0;
+}
+.main {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items:center;
+  flex: 1 1 auto;
+}
+
+.board {
+  order: 2;
+  width: 100%;
+  height: 100%;
+  flex-flow:row;
+  justify-content: center;
+
+}
+.row {
+  flex-flow: row;
+  justify-content: center;
+  align-content: center;
+  margin: 0;
+}
+.box {
+  height: 80px;
+  width: 80px;
+  margin: 5px;
+  font-size: 80px;
+  margin: 10px 5px;
+  justify-content: center;
+}
+.oddTokens {
+  display:inline-block;
+  height: auto;
+  width: 80%;
+  order: 1;
+  flex-direction: row;
+  align-self: flex-start;
+  justify-content: center;
+  padding: 10px 20px;
+}
+.evenTokens {
+  display: inline-block;
+  height: auto;
+  width: 80%;
+  order: 3;
+  flex-direction: row;
+  align-self: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+}
+.message {
+  font-size:12px;
+  height: 14px;
+}
+.token {
+  display: inline-block;
+  font-size: 40px;
+  color: rgb(218,147,152);
+  height: 40px;
+  width: 40px;
+  margin: 10px auto;
+  flex-flow: row;
+}
+.usedToken {
+  color:rgb(51,69,92);
+}
+.board {
+  width: 80%;
+}
 }
